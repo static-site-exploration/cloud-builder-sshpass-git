@@ -3,7 +3,7 @@ FROM gcr.io/cloud-builders/git
 RUN set -e \
 
   # Install libraries
-  && apt-get update && \
+  && apt-get update \
   && apt-get -y install sshpass \
 
   # Cleanup
