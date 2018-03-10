@@ -13,5 +13,4 @@ RUN set -e \
           /var/tmp/* \
           /tmp/* \
 
-ARG passvalue_file_location
-ENTRYPOINT ["sshpass", "-p"]
+ENTRYPOINT ["sshpass", "-p", "$password", "git"]
