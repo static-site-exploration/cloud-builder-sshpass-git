@@ -13,4 +13,4 @@ RUN set -e \
           /var/tmp/* \
           /tmp/* \
 
-ENTRYPOINT ["sshpass", "-p", "$password", "git"]
+ENTRYPOINT ["bash -c 'if [ -z "$ssh_pass" ]; then echo "SSH key is not set, aborting"; exit 1;' ", "$ssh_pass", "-p", "$password", "git"]
