@@ -11,6 +11,6 @@ RUN set -e \
   && rm -rf \
           /var/lib/apt/lists/* \
           /var/tmp/* \
-          /tmp/* \
+          /tmp/*
 
 ENTRYPOINT ["sshpass", "-p", "$ssh_passphrase", "git"]
