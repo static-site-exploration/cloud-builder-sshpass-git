@@ -3,7 +3,7 @@ steps:
   args: ['build', '--tag=gcr.io/$PROJECT_ID/sshpass-git', '.']
 
 # Print version information.
-- name: gcr.io/$PROJECT_ID/wget
+- name: gcr.io/$PROJECT_ID/sshpass-git
   args: ['-V']
 
 # TODO(markdorrill):STEPS TO TEST ARGUMENTS
