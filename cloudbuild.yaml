@@ -2,10 +2,10 @@ steps:
 - name: gcr.io/cloud-builders/docker
   args: ['build', '--tag=gcr.io/$PROJECT_ID/sshpass-git', '.']
 
-# Print version information.
-- name: gcr.io/$PROJECT_ID/sshpass-git
-  args: ['-V']
-
 # TODO(markdorrill):STEPS TO TEST ARGUMENTS
+
+# Print version information.
+#- name: gcr.io/$PROJECT_ID/sshpass-git
+#  args: ['-V']
 
 images: ['gcr.io/$PROJECT_ID/sshpass-git']
