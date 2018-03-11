@@ -15,6 +15,7 @@ RUN set -e \
           
   # Setup sshpass variable
   && export SSHPASS=$build_ssh_password
-  
-ENTRYPOINT ["sshpass", "-e", "git"]
+ 
+ENTRYPOINT ["-c", "entrypoint.sh"]
+#ENTRYPOINT ["sshpass", "-e", "git"]
 #ENTRYPOINT ["sshpass", "-p", "1bigbeer", "git"]
