@@ -11,7 +11,8 @@ RUN set -e \
   && rm -rf \
           /var/lib/apt/lists/* \
           /var/tmp/* \
-          /tmp/*
+          /tmp/* \
+          
   # Setup sshpass variable
   && export SSHPASS=$build_ssh_password
   
