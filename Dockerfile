@@ -13,5 +13,5 @@ RUN set -e \
           /var/tmp/* \
           /tmp/*
 
-#ENTRYPOINT ["sshpass", "-e", "git"]
-ENTRYPOINT echo "ssh_pass is" $ssh_pass && sshpass -p $ssh_pass git
+ENTRYPOINT ["export SSHPASS=$build_ssh_password", "sshpass", "-e", "git"]
+#ENTRYPOINT echo "ssh_pass is" $ssh_pass && sshpass -p $ssh_pass git
