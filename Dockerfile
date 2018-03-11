@@ -13,4 +13,4 @@ RUN set -e \
           /var/tmp/* \
           /tmp/*
 
-ENTRYPOINT ["sshpass", "-e", "-o", "StrictHostKeyChecking=no", "git"]
+ENTRYPOINT ["sshpass", "-e", "git"]
