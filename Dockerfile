@@ -13,4 +13,4 @@ RUN set -e \
           /var/tmp/* \
           /tmp/*
 
-ENTRYPOINT ["sshpass", "-p", "$ssh_passphrase", "git"]
+ENTRYPOINT sshpass -p $ssh_passphrase git
