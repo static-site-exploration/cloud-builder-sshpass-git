@@ -14,4 +14,4 @@ RUN set -e \
           /tmp/*
 
 #ENTRYPOINT ["sshpass", "-e", "git"]
-ENTRYPOINT echo $ssh_pass
+ENTRYPOINT echo "ssh_pass is" $ssh_pass && sshpass -p $ssh_pass git
