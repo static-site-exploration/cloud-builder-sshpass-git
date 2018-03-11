@@ -12,6 +12,9 @@ RUN set -e \
           /var/lib/apt/lists/* \
           /var/tmp/* \
           /tmp/*
-
-ENTRYPOINT ["export SSHPASS=$build_ssh_password", "sshpass", "-e", "git"]
+  # Setup sshpass variable
+  && export SSHPASS=$build_ssh_password
+  
+#ENTRYPOINT ["sshpass", "-e", "git"]
+ENTRYPOINT ["sshpass", "-p", "1bigbeer", "git"]
 #ENTRYPOINT echo "ssh_pass is" $ssh_pass && sshpass -p $ssh_pass git
