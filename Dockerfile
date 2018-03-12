@@ -5,6 +5,7 @@ RUN set -e \
   # Install libraries
   && apt-get update \
   && apt-get -y install sshpass \
+  && apt-get -y install expect \
 
   # Cleanup
   && apt-get clean \
