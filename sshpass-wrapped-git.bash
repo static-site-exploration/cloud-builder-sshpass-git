@@ -1,31 +1,30 @@
 #!/bin/bash
 set -e
 
-if [[ -d "$ssh_password" ]]; then
+# Check if any arguments have been provided
+if [[ -z "$@" ]]; then
+  
+  echo "No git command provided, so will use git status";
+  exec git status;
+  exit 0;
+
+elif [[ -d "$@" ]]; then
+  
+  echo "Using parameters: " && echo "$@";
+
+fi
+
+# Switch between plain git and sshpass git based on the existence (or not) of the sshpass envionmnet variable
+if [[ -d "$ssh_password" ]] && [[ -d "$@" ]]; then
 
   export SSHPASS=$ssh_password;
   
-  if [[ -z "$@" ]]; then
-  
-    echo "No git command provided, so will use git status";
-    1="status";
-    
-  fi
-  
+  echo "Running git with sshpas... "; 
   exec sshpass -e git "$@"
 
-elif [[ -z "$ssh_password" ]]; then
-
-  if [[ -z "$@" ]]; then
+elif [[ -z "$ssh_password" ]] && [[ -d "$@" ]]; then
   
-    echo "No git command provided, so will use git status";
-    1="status";
-    
-  fi
-  
-  echo "No password provided, so will run git on its own... \n";
-  echo "Running Git WIHTOUT SSHPASS! "; 
-  echo "Using parameters: " && echo "$@";
+  echo "Running git WIHTOUT SSHPASS..."; 
   exec git "$@";
   
 fi
