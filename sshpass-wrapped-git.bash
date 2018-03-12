@@ -19,10 +19,15 @@ else
     echo "Running git with sshpas... "; 
     exec sshpass -e git "$@"
 
-  else
+  elif [[ -z "$ssh_password" ]] && [[ -d "$@" ]]; then
 
     echo "Running git WIHTOUT SSHPASS..."; 
     exec git "$@";
+  
+  else
+  
+    echo "Error with git-sshpass";
+    exit 1;
 
   fi
 
