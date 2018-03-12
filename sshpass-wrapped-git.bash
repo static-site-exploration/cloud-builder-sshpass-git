@@ -6,7 +6,6 @@ if [[ -z "$@" ]]; then
   
   echo "No git command provided, so will use git status";
   exec git status;
-  exit 0;
 
 elif [[ -d "$@" ]]; then
   
