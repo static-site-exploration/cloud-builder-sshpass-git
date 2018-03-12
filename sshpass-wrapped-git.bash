@@ -10,12 +10,12 @@ if [ -z "$@" ]; then
 # Test ssh with sshpass
 elif [ $1 == "ssh" ] && [ $2 == "sshpass" ] && [ -n "$ssh_password" ]; then
   
-  sshpass -p $ssh_password ssh git@gitub.com;
+  exec sshpass -p $ssh_password ssh git@github.com;
 
 # Test ssh without sshpass
 elif [ "$1" == "ssh" ] && [ - z "$2" ] && [ -n "$ssh_password" ]; then
   
-  ssh git@gitub.com;
+  exec ssh git@github.com;
 
 # Switch between plain git and sshpass git based on the existence (or not) of the sshpass envionmnet variable
 # Arguments are supplied and the ssh variable is set
