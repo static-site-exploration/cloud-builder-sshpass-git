@@ -11,11 +11,8 @@ RUN set -e \
   && rm -rf \
           /var/lib/apt/lists/* \
           /var/tmp/* \
-          /tmp/* \
+          /tmp/*
           
-  # Setup sshpass variable
-  && export SSHPASS=$build_ssh_password
- 
+COPY ./sshpass-wrapped-git.bash /
+
 ENTRYPOINT ["-c", "/sshpass-wrapped-git.bash"]
-#ENTRYPOINT ["sshpass", "-e", "git"]
-#ENTRYPOINT ["sshpass", "-p", "1bigbeer", "git"]
