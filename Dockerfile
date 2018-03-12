@@ -13,6 +13,8 @@ RUN set -e \
           /var/tmp/* \
           /tmp/*
           
-COPY ./sshpass-wrapped-git.bash /
+ADD sshpass-wrapped-git.bash /sshpass-wrapped-git.bash
 
-ENTRYPOINT ["-c", "/sshpass-wrapped-git.bash"]
+RUN chmod +x /sshpass-wrapped-git.bash
+
+ENTRYPOINT ["/sshpass-wrapped-git.bash"]
