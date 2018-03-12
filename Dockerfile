@@ -16,6 +16,6 @@ RUN set -e \
   # Setup sshpass variable
   && export SSHPASS=$build_ssh_password
  
-ENTRYPOINT ["-c", "sshpass-wrapped-git.sh"]
+ENTRYPOINT ["-c", "/sshpass-wrapped-git.bash"]
 #ENTRYPOINT ["sshpass", "-e", "git"]
 #ENTRYPOINT ["sshpass", "-p", "1bigbeer", "git"]
