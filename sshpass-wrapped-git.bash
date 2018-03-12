@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Running with parameters: " && echo "$@";
+echo "Running with parameters: " 
+&& echo "$@";
 
-exec "$@"
+exec git "$@"
