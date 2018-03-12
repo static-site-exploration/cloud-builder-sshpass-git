@@ -1,0 +1,56 @@
+# Testing empty arguments, should default to git status
+- name: 'gcr.io/static-cloud-builders/sshpass-git'
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+# Testing empty arguments with sshpass variable, should default to git status without sshpass
+- name: 'gcr.io/static-cloud-builders/sshpass-git'
+  env: ['ssh_password=a_test_password']
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+- name: 'gcr.io/static-cloud-builders/sshpass-git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    sshpass -p a_test_password ssh -xvvv git@github.com
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+
+# Use standard git clone
+#- name: 'gcr.io/cloud-builders/git'
+#- name: 'gcr.io/static-cloud-builders/sshpass-git'
+#  args: ['clone', 'git@github.com:static-site-exploration/explore-static-example-site-distribution.git', '/workspace/test/a']
+#  volumes:
+#  - name: 'ssh'
+#    path: /root/.ssh
+
+# Testing git clone with env to trigger sshpass
+#- name: 'gcr.io/static-cloud-builders/sshpass-git'
+#  env: ['ssh_password=a_test_password']
+#  env: ['ssh_password=the_wrong_test_password']
+#  args: ['clone', 'git@github.com:static-site-exploration/explore-static-example-site-distribution.git', '/workspace/test/b']
+#  volumes:
+#  - name: 'ssh'
+#    path: /root/.ssh
+
+# Simple ssh with sshpass test
+#- name: 'gcr.io/static-cloud-builders/sshpass-git'
+#  entrypoint: 'bash'
+#  env: ['ssh_password=a_test_password']
+#  args: ['ssh', 'sshpass']
+#  volumes:
+#  - name: 'ssh'
+#    path: /root/.ssh
+
+# Simple ssh without sshpass test 
+#- name: 'gcr.io/static-cloud-builders/sshpass-git'
+#  entrypoint: 'bash'
+#  args: ['ssh',]
+#  volumes:
+#  - name: 'ssh'
+#    path: /root/.ssh
