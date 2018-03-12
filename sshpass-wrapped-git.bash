@@ -11,16 +11,16 @@ if [[ -z "$@" ]]; then
 # Arguments are supplied and the ssh variable is set
 elif [[ -n "$@" ]] && [[ -n "$ssh_password" ]]; then
 
-  export SSHPASS=$ssh_password;
+# export SSHPASS=$ssh_password;
   
-  echo "Running git with sshpas... ";
-  echo "Using parameters: " && echo "$@";
-  exec sshpass -e git "$@"
+  echo "Running git with sshpas... " && echo "Using parameters: " && echo "$@";
+  exec sshpass -p $ssh_password git "$@";
+# exec -e git "$@";
 
 # Arguments are supplied without the ssh variable being set
 elif [[ -n "$@" ]] && [[ -z "$ssh_password" ]]; then
 
-  echo "Running git WIHTOUT SSHPASS...";
+  echo "Running git with sshpas... " && echo "Using parameters: " && echo "$@";
   echo "Using parameters: " && echo "$@";
   exec git "$@";
 
